@@ -18,6 +18,10 @@ describe('AppRegistry', function() {
       expect(registry.actions.TestAction).to.equal('testing');
     });
 
+    it('allows access via the getter', function() {
+      expect(registry.getAction('TestAction')).to.equal('testing');
+    });
+
     it('publishes an action registered action', function(done) {
       var unsubscribe = Action.actionRegistered.listen(function(name) {
         expect(name).to.equal('TestAction');
@@ -38,6 +42,10 @@ describe('AppRegistry', function() {
       expect(registry.components.IndexView).to.equal('testing');
     });
 
+    it('allows access via the getter', function() {
+      expect(registry.getComponent('IndexView')).to.equal('testing');
+    });
+
     it('publishes a component registered action', function(done) {
       var unsubscribe = Action.componentRegistered.listen(function(name) {
         expect(name).to.equal('IndexView');
@@ -56,6 +64,10 @@ describe('AppRegistry', function() {
 
     it('registers the store', function() {
       expect(registry.stores.IndexStore).to.equal('testing');
+    });
+
+    it('allows access via the getter', function() {
+      expect(registry.getStore('IndexStore')).to.equal('testing');
     });
 
     it('publishes a store registered action', function(done) {

@@ -19,9 +19,13 @@ registry.registerAction('Action::MyAction', action);
 registry.registerComponent('Component::MyComponent', component);
 registry.registerStore('Store::MyStore', store);
 
-registry.actions; // { 'Action::MyAction': action }
-registry.components; // { 'Component::MyComponent': component }
-registry.stores; // { 'Store::MyStore':: store }
+registry.actions; //=> { 'Action::MyAction': action }
+registry.components; //=> { 'Component::MyComponent': component }
+registry.stores; //=> { 'Store::MyStore':: store }
+
+registry.getAction('Action::MyAction'); //=> action
+registry.getComponent('Component::MyComponent'); //=> component
+registry.getStore('Store::MyStore'); //=> store
 
 registry.deregisterAction('Action::MyAction');
 registry.deregisterComponent('Component::MyComponent');
