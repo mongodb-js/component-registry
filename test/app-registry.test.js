@@ -29,6 +29,20 @@ describe('AppRegistry', function() {
         done();
       });
     });
+
+    context('when the action already exists', function() {
+      beforeEach(function() {
+        registry.registerAction('TestAction', 'override');
+      });
+
+      it('publishes an action overridden action', function(done) {
+        var unsubscribe = Action.actionOverridden.listen(function(name) {
+          expect(name).to.equal('TestAction');
+          unsubscribe();
+          done();
+        });
+      });
+    });
   });
 
   describe('#registerComponent', function() {
@@ -53,6 +67,20 @@ describe('AppRegistry', function() {
         done();
       });
     });
+
+    context('when the component already exists', function() {
+      beforeEach(function() {
+        registry.registerComponent('IndexView', 'override');
+      });
+
+      it('publishes a component overridden action', function(done) {
+        var unsubscribe = Action.componentOverridden.listen(function(name) {
+          expect(name).to.equal('IndexView');
+          unsubscribe();
+          done();
+        });
+      });
+    });
   });
 
   describe('#registerStore', function() {
@@ -75,6 +103,20 @@ describe('AppRegistry', function() {
         expect(name).to.equal('IndexStore');
         unsubscribe();
         done();
+      });
+    });
+
+    context('when the store already exists', function() {
+      beforeEach(function() {
+        registry.registerStore('IndexStore', 'override');
+      });
+
+      it('publishes a store overridden action', function(done) {
+        var unsubscribe = Action.storeOverridden.listen(function(name) {
+          expect(name).to.equal('IndexStore');
+          unsubscribe();
+          done();
+        });
       });
     });
   });
