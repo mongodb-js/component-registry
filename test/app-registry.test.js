@@ -65,6 +65,26 @@ describe('AppRegistry', function() {
         done();
       });
     });
+
+    context('when the component already exists', function() {
+      beforeEach(function() {
+        registry.registerContainer('Collection.Tab', 'test');
+      });
+
+      it('does not register the duplicate', function() {
+        expect(registry.containers['Collection.Tab']).to.deep.equal([ 'test' ]);
+      });
+    });
+
+    context('when the component does not already exists', function() {
+      beforeEach(function() {
+        registry.registerContainer('Collection.Tab', 'testing');
+      });
+
+      it('registers the additional component', function() {
+        expect(registry.containers['Collection.Tab']).to.deep.equal([ 'test', 'testing' ]);
+      });
+    });
   });
 
   describe('#registerComponent', function() {
