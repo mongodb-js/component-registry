@@ -43,6 +43,30 @@ describe('AppRegistry', function() {
     });
   });
 
+  describe('#registerContainer', function() {
+    var registry = null;
+
+    beforeEach(function() {
+      registry = new AppRegistry().registerContainer('Collection.Tab', 'test');
+    });
+
+    it('registers the component', function() {
+      expect(registry.containers['Collection.Tab']).to.deep.equal([ 'test' ]);
+    });
+
+    it('allows access via the getter', function() {
+      expect(registry.getContainer('Collection.Tab')).to.deep.equal([ 'test' ]);
+    });
+
+    it('publishes a container registered action', function(done) {
+      var unsubscribe = Action.containerRegistered.listen(function(name) {
+        expect(name).to.equal('Collection.Tab');
+        unsubscribe();
+        done();
+      });
+    });
+  });
+
   describe('#registerComponent', function() {
     var registry = null;
 
