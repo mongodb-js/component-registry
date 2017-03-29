@@ -6,7 +6,7 @@ const AppRegistry = require('../lib/app-registry');
 
 describe('AppRegistry', function() {
   describe('#registerAction', function() {
-    var registry = null;
+    let registry = null;
 
     beforeEach(function() {
       registry = new AppRegistry().registerAction('TestAction', 'testing');
@@ -21,7 +21,7 @@ describe('AppRegistry', function() {
     });
 
     it('publishes an action registered action', function(done) {
-      var unsubscribe = Action.actionRegistered.listen(function(name) {
+      const unsubscribe = Action.actionRegistered.listen(function(name) {
         expect(name).to.equal('TestAction');
         unsubscribe();
         done();
@@ -34,7 +34,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes an action overridden action', function(done) {
-        var unsubscribe = Action.actionOverridden.listen(function(name) {
+        const unsubscribe = Action.actionOverridden.listen(function(name) {
           expect(name).to.equal('TestAction');
           unsubscribe();
           done();
@@ -44,7 +44,7 @@ describe('AppRegistry', function() {
   });
 
   describe('#registerContainer', function() {
-    var registry = null;
+    let registry = null;
 
     beforeEach(function() {
       registry = new AppRegistry().registerContainer('Collection.Tab', 'test');
@@ -59,7 +59,7 @@ describe('AppRegistry', function() {
     });
 
     it('publishes a container registered action', function(done) {
-      var unsubscribe = Action.containerRegistered.listen(function(name) {
+      const unsubscribe = Action.containerRegistered.listen(function(name) {
         expect(name).to.equal('Collection.Tab');
         unsubscribe();
         done();
@@ -88,7 +88,7 @@ describe('AppRegistry', function() {
   });
 
   describe('#registerComponent', function() {
-    var registry = null;
+    let registry = null;
 
     beforeEach(function() {
       registry = new AppRegistry().registerComponent('IndexView', 'testing');
@@ -103,7 +103,7 @@ describe('AppRegistry', function() {
     });
 
     it('publishes a component registered action', function(done) {
-      var unsubscribe = Action.componentRegistered.listen(function(name) {
+      const unsubscribe = Action.componentRegistered.listen(function(name) {
         expect(name).to.equal('IndexView');
         unsubscribe();
         done();
@@ -116,7 +116,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a component overridden action', function(done) {
-        var unsubscribe = Action.componentOverridden.listen(function(name) {
+        const unsubscribe = Action.componentOverridden.listen(function(name) {
           expect(name).to.equal('IndexView');
           unsubscribe();
           done();
@@ -126,7 +126,7 @@ describe('AppRegistry', function() {
   });
 
   describe('#registerRole', function() {
-    var registry = null;
+    let registry = null;
 
     beforeEach(function() {
       registry = new AppRegistry().registerRole('Collection.Action', 'test');
@@ -141,7 +141,7 @@ describe('AppRegistry', function() {
     });
 
     it('publishes a role registered action', function(done) {
-      var unsubscribe = Action.roleRegistered.listen(function(name) {
+      const unsubscribe = Action.roleRegistered.listen(function(name) {
         expect(name).to.equal('Collection.Action');
         unsubscribe();
         done();
@@ -170,7 +170,7 @@ describe('AppRegistry', function() {
   });
 
   describe('#registerStore', function() {
-    var registry = null;
+    let registry = null;
 
     beforeEach(function() {
       registry = new AppRegistry().registerStore('IndexStore', 'testing');
@@ -185,7 +185,7 @@ describe('AppRegistry', function() {
     });
 
     it('publishes a store registered action', function(done) {
-      var unsubscribe = Action.storeRegistered.listen(function(name) {
+      const unsubscribe = Action.storeRegistered.listen(function(name) {
         expect(name).to.equal('IndexStore');
         unsubscribe();
         done();
@@ -198,7 +198,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a store overridden action', function(done) {
-        var unsubscribe = Action.storeOverridden.listen(function(name) {
+        const unsubscribe = Action.storeOverridden.listen(function(name) {
           expect(name).to.equal('IndexStore');
           unsubscribe();
           done();
@@ -209,7 +209,7 @@ describe('AppRegistry', function() {
 
   describe('#deregisterAction', function() {
     context('when the action exists', function() {
-      var registry = null;
+      let registry = null;
 
       beforeEach(function() {
         registry = new AppRegistry()
@@ -222,7 +222,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes an action deregisted action', function(done) {
-        var unsubscribe = Action.actionDeregistered.listen(function(name) {
+        const unsubscribe = Action.actionDeregistered.listen(function(name) {
           expect(name).to.equal('TestAction');
           unsubscribe();
           done();
@@ -233,7 +233,7 @@ describe('AppRegistry', function() {
 
   describe('#deregisterComponent', function() {
     context('when the component exists', function() {
-      var registry = null;
+      let registry = null;
 
       beforeEach(function() {
         registry = new AppRegistry()
@@ -246,7 +246,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a component deregisted action', function(done) {
-        var unsubscribe = Action.componentDeregistered.listen(function(name) {
+        const unsubscribe = Action.componentDeregistered.listen(function(name) {
           expect(name).to.equal('TestComponent');
           unsubscribe();
           done();
@@ -257,7 +257,7 @@ describe('AppRegistry', function() {
 
   describe('#deregisterContainer', function() {
     context('when the container exists', function() {
-      var registry = null;
+      let registry = null;
 
       beforeEach(function() {
         registry = new AppRegistry()
@@ -271,7 +271,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a container deregisted action', function(done) {
-        var unsubscribe = Action.containerDeregistered.listen(function(name) {
+        const unsubscribe = Action.containerDeregistered.listen(function(name) {
           expect(name).to.equal('TestContainer');
           unsubscribe();
           done();
@@ -282,7 +282,7 @@ describe('AppRegistry', function() {
 
   describe('#deregisterRole', function() {
     context('when the role exists', function() {
-      var registry = null;
+      let registry = null;
 
       beforeEach(function() {
         registry = new AppRegistry()
@@ -296,7 +296,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a role deregisted action', function(done) {
-        var unsubscribe = Action.roleDeregistered.listen(function(name) {
+        const unsubscribe = Action.roleDeregistered.listen(function(name) {
           expect(name).to.equal('TestRole');
           unsubscribe();
           done();
@@ -307,7 +307,7 @@ describe('AppRegistry', function() {
 
   describe('#deregisterStore', function() {
     context('when the store exists', function() {
-      var registry = null;
+      let registry = null;
 
       beforeEach(function() {
         registry = new AppRegistry()
@@ -320,7 +320,7 @@ describe('AppRegistry', function() {
       });
 
       it('publishes a store deregisted action', function(done) {
-        var unsubscribe = Action.storeDeregistered.listen(function(name) {
+        const unsubscribe = Action.storeDeregistered.listen(function(name) {
           expect(name).to.equal('TestStore');
           unsubscribe();
           done();
